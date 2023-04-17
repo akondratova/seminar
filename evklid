@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int F(int a, int b) {
+    if (a > b) {
+        a -= b;
+        return F(a, b);
+    }
+    else if (b > a) {
+        b -= a;
+        return F(a, b);
+    }
+    else if (a == b) {
+        cout << a << endl;
+        return 0;
+    }
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    cout << F(a, b);
+}
