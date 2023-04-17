@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <map>
+using namespace std;
+
+map <int, int> trib_cash;
+int tribonachi(int n) {
+    if (n == 1 || n == 2 || n == 3)
+        return 1;
+    else {
+        if (trib_cash.count(n - 1) == 0)
+            trib_cash[n - 1] = tribonachi(n - 1);
+        if (trib_cash.count(n - 2) == 0)
+            trib_cash[n - 2] = tribonachi(n - 2);
+        if (trib_cash.count(n - 1) == 0)
+            trib_cash[n - 3] = tribonachi(n - 3);
+
+        return trib_cash[n - 1] + trib_cash[n - 2] + trib_cash[n - 3];
+    }
+}
+
+void print(int n) {
+    if (n == 1)
+        cout << " ";
+    else {
+        cout << tribonachi(n - 1) << " ";
+        print(n - 1);
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    print(n);
+}
