@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int f(int s, int k) {
+    if (s == k) {
+        return 1;
+    }
+    else if (s > k) {
+        return 0;
+    }
+    else
+        return f(s + 3, k) + f(s + 5, k);
+
+}
+
+int main() {
+    int x;
+    cin >> x;
+    cout << f(0, x);
+}
+
